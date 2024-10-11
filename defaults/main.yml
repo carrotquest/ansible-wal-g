@@ -9,6 +9,8 @@ walg_tarball: false
 
 walg_user: postgres
 
+walg_conf_type: "env"  # env or yml
+walg_conf_yml_file: /etc/wal-g/config.yml
 walg_env: /etc/default/wal-g
 walg_script_path: /usr/local/scripts
 walg_data_path: /var/lib/postgresql/12/main
@@ -22,6 +24,18 @@ walg_s3_bucket: backup
 walg_s3_prefix: ''
 walg_s3_storage_class: STANDARD_IA
 walg_s3_use_path_style: false
+
+# A map of storage config parameters
+# Like:
+# walg_failover_storages
+#   aws:
+#      walg_s3_id: "id"
+#      walg_s3_secret: "secret"
+#      walg_s3_region: "eu-west-1"
+#      walg_s3_endpoint: walg_s3_endpoint: "https://s3.dualstack.eu-west-1.amazonaws.com"
+#   other:
+#        ...
+walg_failover_storages: []
 
 walg_pg_socket: /var/run/postgresql
 
