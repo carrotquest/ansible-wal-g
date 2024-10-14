@@ -6,13 +6,14 @@ set -o errexit    # Used to exit upon error, avoiding cascading errors
 set -o nounset    # Exposes unset variables
 set -o pipefail   # Unveils hidden failures
 
-
+{% if walg_conf_type == "env" %}
 set -o allexport
 source {{ walg_env }}
 set +o allexport
+{% endif %}
 
 start=`date +%s%3N`
-{{ walg_binary }} wal-fetch $1 $2
+{{ walg_binary }} wal-fetch $1 $2 {% if walg_conf_type == "yml" %}--config {{ walg_conf_yml_file }}{% endif %}
 end=`date +%s%3N`
 current_dt="`date +'%Y/%m/%d %H:%M:%S.%6N'`"
 echo "INFO: ${current_dt} WAL FETCH TIME: $(($end - $start)) ms"
