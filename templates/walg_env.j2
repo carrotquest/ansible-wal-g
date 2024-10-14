@@ -3,56 +3,56 @@
 {% if walg_aws_combine %}
 # AWS S3 setup
 {%   for key, val in walg_aws_combine.items() %}
-{{ key | upper }}={{ val }}
+{{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
 
 {% if walg_azure_combine %}
 # Azure Storage setup
-{%   for var in walg_azure_combine.items() %}
-{{ var.option | upper }}={{ var.value }}
+{%   for key, val in walg_azure_combine.items() %}
+{{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
 
 {% if walg_gcs_combine %}
 # Google Cloud Storage setup
-{%   for var in walg_gcs_combine.items() %}
-{{ var.option | upper }}={{ var.value }}
+{%   for key, val in walg_gcs_combine.items() %}
+{{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
 
 {% if walg_swift_combine %}
 # Swift object storage setup
-{%   for var in walg_swift_combine.items() %}
-{{ var.option | upper }}={{ var.value }}
+{%   for key, val in walg_swift_combine.items() %}
+{{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
 
 {% if walg_filesystem_combine %}
 # Backups on filesystem setup
-{%   for var in walg_filesystem_combine.items() %}
-{{ var.option | upper }}={{ var.value }}
+{%   for key, val in walg_filesystem_combine.items() %}
+{{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
 
 {% if walg_mongodb_combine %}
 # MongoDB setup
-{%   for var in walg_mongodb_combine.items() %}
-{{ var.option | upper }}={{ var.value }}
+{%   for key, val in walg_mongodb_combine.items() %}
+{{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
 
 {% if walg_mysql_combine %}
 # MySQL setup
-{%   for var in walg_mysql_combine.items() %}
-{{ var.option | upper }}={{ var.value }}
+{%   for key, val in walg_mysql_combine.items() %}
+{{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
 
 {% if walg_postgresql_combine %}
 # PostgreSQL setup
-{%   for var in walg_postgresql_combine.items() %}
-{{ var.option | upper }}={{ var.value }}
+{%   for key, val in walg_postgresql_combine.items() %}
+{{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
 
@@ -66,7 +66,7 @@ WALG_STATSD_EXTRA_TAGS=map[{{ walg_statsd_extra_tags.items() | map('join', ':') 
 
 {% if walg_common_combine %}
 # Wal-G setup
-{%   for var in walg_common_combine.items() %}
-{{ var.option | upper }}={{ var.value }}
+{%   for key, val in walg_common_combine.items() %}
+{{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}

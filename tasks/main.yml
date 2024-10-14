@@ -120,6 +120,7 @@
     path: "{{ walg_env | dirname }}"
     state: directory
     mode: 0755
+  when: walg_conf_type == "env"
   tags:
     - always
 
@@ -142,7 +143,16 @@
 #   tags:
 #     - always
 
-- name: wal-g | create env file
+- name: wal-g | check yml directory
+  file:
+    path: "{{ walg_conf_yml_file | dirname }}"
+    state: directory
+    mode: 0755
+  when: walg_conf_type == "yml"
+  tags:
+    - always
+
+- name: wal-g | create yml file
   template:
     src: 'config.yml.j2'
     dest: "{{ walg_conf_yml_file }}"
