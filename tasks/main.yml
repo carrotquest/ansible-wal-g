@@ -134,13 +134,13 @@
   tags:
     - always
 
-- name: wal-g | remove unused env file
-  file:
-    path: "{{ walg_env }}"
-    state: absent
-  when: walg_conf_type != "env"
-  tags:
-    - always
+# - name: wal-g | remove unused env file
+#   file:
+#     path: "{{ walg_env }}"
+#     state: absent
+#   when: walg_conf_type != "env"
+#   tags:
+#     - always
 
 - name: wal-g | create env file
   template:
@@ -153,13 +153,13 @@
   tags:
     - always
 
-- name: wal-g | remove unused yaml conf file
-  file:
-    path: "{{ walg_conf_yml_file }}"
-    state: absent
-  when: walg_conf_type != "yml"
-  tags:
-    - always
+# - name: wal-g | remove unused yaml conf file
+#   file:
+#     path: "{{ walg_conf_yml_file }}"
+#     state: absent
+#   when: walg_conf_type != "yml"
+#   tags:
+#     - always
 
 - name: wal-g | check scripts directory
   file:

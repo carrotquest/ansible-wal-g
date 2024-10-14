@@ -8,10 +8,9 @@ set -o errexit    # Used to exit upon error, avoiding cascading errors
 set -o nounset    # Exposes unset variables
 set -o pipefail   # Unveils hidden failures
 
-{% if walg_conf_type == "env" %}
+
 set -o allexport
 source {{ walg_env }}
 set +o allexport
-{% endif %}
 
-{{ walg_binary }} backup-list --pretty --detail --json {% if walg_conf_type == "yml" %}--config {{ walg_conf_yml_file }}{% endif %}
+{{ walg_binary }} backup-list --pretty --detail --json
