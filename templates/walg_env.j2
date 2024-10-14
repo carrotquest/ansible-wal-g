@@ -6,28 +6,24 @@
 {{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
-
 {% if walg_azure_combine %}
 # Azure Storage setup
 {%   for key, val in walg_azure_combine.items() %}
 {{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
-
 {% if walg_gcs_combine %}
 # Google Cloud Storage setup
 {%   for key, val in walg_gcs_combine.items() %}
 {{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
-
 {% if walg_swift_combine %}
 # Swift object storage setup
 {%   for key, val in walg_swift_combine.items() %}
 {{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
-
 {% if walg_filesystem_combine %}
 # Backups on filesystem setup
 {%   for key, val in walg_filesystem_combine.items() %}
@@ -41,14 +37,12 @@
 {{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
-
 {% if walg_mysql_combine %}
 # MySQL setup
 {%   for key, val in walg_mysql_combine.items() %}
 {{     key | upper }}={{ val }}
 {%   endfor %}
 {% endif %}
-
 {% if walg_postgresql_combine %}
 # PostgreSQL setup
 {%   for key, val in walg_postgresql_combine.items() %}
