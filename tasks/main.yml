@@ -195,21 +195,27 @@
 - name: wal-g | create cron job for create backups
   cron:
     name: Create wal-g backups
-    hour: '1'
-    minute: '0'
+    weekday: "{{ walg_cron_backup.weekday | d(*) }}"
+    month: "{{ walg_cron_backup.month | d(*) }}"
+    day: "{{ walg_cron_backup.day | d(*) }}"
+    hour: "{{ walg_cron_backup.hour | d(1) }}"
+    minute: "{{ walg_cron_backup.minute | d(0) }}"
     user: "{{ walg_user }}"
     job: "{{ walg_script_path }}/walg-backup.sh"
-    state: "{{ walg_cron_enabled | ternary('present', 'absent') }}"
+    state: "{{ walg_cron_backup | ternary('present', 'absent') }}"
   tags:
     - always
 
 - name: wal-g | create cron job for rotate backups
   cron:
     name: Rotate wal-g backups
-    hour: '0'
-    minute: '0'
+    weekday: "{{ walg_cron_backup_rotate.weekday | d(*) }}"
+    month: "{{ walg_cron_backup_rotate.month | d(*) }}"
+    day: "{{ walg_cron_backup_rotate.day | d(*) }}"
+    hour: "{{ walg_cron_backup_rotate.hour | d(0) }}"
+    minute: "{{ walg_cron_backup_rotate.minute | d(0) }}"
     user: "{{ walg_user }}"
     job: "{{ walg_script_path }}/walg-rotate.sh"
-    state: "{{ walg_cron_enabled | ternary('present', 'absent') }}"
+    state: "{{ walg_cron_backup_rotate | ternary('present', 'absent') }}"
   tags:
     - always
