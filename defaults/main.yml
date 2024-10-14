@@ -59,10 +59,16 @@ walg_gcs_override: []
 walg_swift_override: []
 walg_filesystem_override: []
 
+## Failover storages
+walg_failover_storages_override: []
+
 ## Databases
 walg_mongodb_override: []
 walg_mysql_override: []
 walg_postgresql_override: []
+
+# Statsd
+walg_statsd_override: []
 
 ## Commons
 walg_common_override: []
