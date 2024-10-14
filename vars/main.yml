@@ -65,6 +65,18 @@ walg_postgresql_config:
   # pgport: "{{ walg_pg_port | d(5432) }}"
   pghost: "{{ walg_pg_socket | d('/var/run/postgresql') }}"
 
+## Failover setup
+walg_failover_config:
+  walg_failover_storages: []
+  walg_failover_storages_check_timeout: "{{ walg_failover_storages_check_timeout | d('30s') }}"
+  walg_failover_storages_cache_lifetime: "{{ walg_failover_storages_cache_lifetime | d('15m') }}"
+  walg_failover_storages_check_size: "{{ walg_failover_storages_check_size | d('1mb') }}"
+
+## Statsd setup
+walg_statsd_setup:
+  walg_statsd_address: "{{ walg_failover_storages_check_timeout | d(omit) }}"
+  walg_statsd_extra_tags: "{{ walg_statsd_extra_tags | d(omit) }}"
+
 # Commons
 ## Wal-G setup
 walg_common_config:

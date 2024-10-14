@@ -53,13 +53,29 @@
 
 {% if walg_failover_storages %}
 # Failover setup
+{%   for key, value in walg_failover_storages_combine.items() %}
+{%     if key != "walg_failover_storages" %}
+{{ key | upper }}: {{ value }}
+{%     endif %}
+{%   endfor %}
 WALG_FAILOVER_STORAGES:
-{% for storage_name, storage_config in walg_failover_storages.items() %}
+{%   for storage_name, storage_config in walg_failover_storages_combine.walg_failover_storages.items() %}
     {{ storage_name | upper }}:
-        {% for key, val in walg_failover_storages.items() %}
+        {% for key, val in walg_failover_storages_combine.walg_failover_storages.items() %}
         {{ key | upper }}={{ val }}
         {% endfor %}
-{% endfor %}
+{%   endfor %}
+{% endif %}
+
+{% if walg_statsd_combine %}
+# Statsd setup
+WALG_STATSD_ADDRESS: {{ walg_statsd_combine.walg_statsd_address }}
+{%   if walg_statsd_combine.walg_statsd_extra_tags %}
+WALG_STATSD_EXTRA_TAGS:
+{%     for key, val in walg_statsd_extra_tags.items() %}
+    {{ key }}: {{ val }}
+{%     endfor %}
+{%   endif %}
 {% endif %}
 
 {% if walg_common_combine | length > 0 %}

@@ -36,6 +36,9 @@ walg_s3_use_path_style: false
 #   other:
 #        ...
 walg_failover_storages: []
+walg_failover_check_timeout: 30s
+walg_failover_storages_cache_lifetime: 15m
+walg_failover_storages_check_size: 1mb
 
 walg_pg_socket: /var/run/postgresql
 

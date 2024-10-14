@@ -22,7 +22,6 @@
   tags:
     - always
 
-
 - name: wal-g | ensure directory exists
   file:
     path: "{{ walg_binary | dirname }}"
@@ -92,23 +91,27 @@
 - name: wal-g | combine env config
   block:
     - set_fact:
-        walg_aws_combine: "{{ walg_aws_config | combine(walg_aws_override) | dict2items(key_name='option', value_name='value') }}"
+        walg_aws_combine: "{{ walg_aws_config | combine(walg_aws_override) }}"
     - set_fact:
-        walg_azure_combine: "{{ walg_azure_config | combine(walg_azure_override) | dict2items(key_name='option', value_name='value') }}"
+        walg_azure_combine: "{{ walg_azure_config | combine(walg_azure_override) }}"
     - set_fact:
-        walg_gcs_combine: "{{ walg_gcs_config | combine(walg_gcs_override) | dict2items(key_name='option', value_name='value') }}"
+        walg_gcs_combine: "{{ walg_gcs_config | combine(walg_gcs_override) }}"
     - set_fact:
-        walg_swift_combine: "{{ walg_swift_config | combine(walg_swift_override) | dict2items(key_name='option', value_name='value') }}"
+        walg_swift_combine: "{{ walg_swift_config | combine(walg_swift_override) }}"
     - set_fact:
-        walg_filesystem_combine: "{{ walg_filesystem_config | combine(walg_filesystem_override) | dict2items(key_name='option', value_name='value') }}"
+        walg_filesystem_combine: "{{ walg_filesystem_config | combine(walg_filesystem_override) }}"
     - set_fact:
-        walg_mongodb_combine: "{{ walg_mongodb_config | combine(walg_mongodb_override) | dict2items(key_name='option', value_name='value') }}"
+        walg_mongodb_combine: "{{ walg_mongodb_config | combine(walg_mongodb_override) }}"
     - set_fact:
-        walg_mysql_combine: "{{ walg_mysql_config | combine(walg_mysql_override) | dict2items(key_name='option', value_name='value') }}"
+        walg_mysql_combine: "{{ walg_mysql_config | combine(walg_mysql_override) }}"
     - set_fact:
-        walg_postgresql_combine: "{{ walg_postgresql_config | combine(walg_postgresql_override) | dict2items(key_name='option', value_name='value') }}"
+        walg_postgresql_combine: "{{ walg_postgresql_config | combine(walg_postgresql_override) }}"
     - set_fact:
-        walg_common_combine: "{{ walg_common_config | combine(walg_common_override) | dict2items(key_name='option', value_name='value') }}"
+        walg_failover_storages_combine: "{{ walg_failover_storages_config | combine(walg_failover_storages_override) }}"
+    - set_fact:
+        walg_statsd_combine: "{{ walg_statsd_config | combine(walg_statsd_override) }}"
+    - set_fact:
+        walg_common_combine: "{{ walg_common_config | combine(walg_common_override) }}"
   tags:
     - always
 
