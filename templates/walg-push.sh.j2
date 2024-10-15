@@ -22,7 +22,7 @@ echo "INFO: ${current_dt} WAL PUSH TIME: $(($end - $start)) ms"
 {% if walg_pushgateway_host %}
 pushgateway_url="http://{{ walg_pushgateway_host }}:{{ walg_pushgateway_port }}/metrics/job/wal-g/hostname/$(hostname)"
 cat <<EOF | curl -s --data-binary @- "${pushgateway_url}" || true
-# TYPE walg_wal_push_time timer
+# TYPE walg_wal_push_time histogram
 # HELP walg_wal_push_time Wal-G wal-push command time (milliseconds)
 walg_wal_push_time $(($end - $start))
 EOF
