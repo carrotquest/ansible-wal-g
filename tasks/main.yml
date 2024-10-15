@@ -195,9 +195,9 @@
 - name: wal-g | create cron job for create backups
   cron:
     name: Create wal-g backups
-    weekday: "{{ walg_cron_backup.weekday | d(*) }}"
-    month: "{{ walg_cron_backup.month | d(*) }}"
-    day: "{{ walg_cron_backup.day | d(*) }}"
+    weekday: "{{ walg_cron_backup.weekday | d('*') }}"
+    month: "{{ walg_cron_backup.month | d('*') }}"
+    day: "{{ walg_cron_backup.day | d('*') }}"
     hour: "{{ walg_cron_backup.hour | d(1) }}"
     minute: "{{ walg_cron_backup.minute | d(0) }}"
     user: "{{ walg_user }}"
@@ -209,9 +209,9 @@
 - name: wal-g | create cron job for rotate backups
   cron:
     name: Rotate wal-g backups
-    weekday: "{{ walg_cron_backup_rotate.weekday | d(*) }}"
-    month: "{{ walg_cron_backup_rotate.month | d(*) }}"
-    day: "{{ walg_cron_backup_rotate.day | d(*) }}"
+    weekday: "{{ walg_cron_backup_rotate.weekday | d('*') }}"
+    month: "{{ walg_cron_backup_rotate.month | d('*') }}"
+    day: "{{ walg_cron_backup_rotate.day | d('*') }}"
     hour: "{{ walg_cron_backup_rotate.hour | d(0) }}"
     minute: "{{ walg_cron_backup_rotate.minute | d(0) }}"
     user: "{{ walg_user }}"

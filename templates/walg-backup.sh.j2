@@ -14,4 +14,16 @@ source {{ walg_env }}
 set +o allexport
 {% endif %}
 
+start=`date +%s%3N`
 {{ walg_binary }} backup-push {{ walg_data_path }} {% if walg_conf_type == "yml" %}--config {{ walg_conf_yml_file }}{% endif %}
+
+end=`date +%s%3N`
+current_dt="`date +'%Y/%m/%d %H:%M:%S.%6N'`"
+echo "INFO: ${current_dt} BACKUP PUSH TIME: $(($end - $start)) ms"
+
+{% if walg_pushgateway_host %}
+pushgateway_url="http://{{ walg_pushgateway_host }}:{{ walg_pushgateway_port }}/metrics/job/wal-g/hostname/$(hostname)"
+cat <<EOF | curl -s --data-binary @- "${pushgateway_url}" || true
+walg_backup_push_time $(($end - $start))
+EOF
+{% endif %}
