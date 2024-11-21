@@ -8,6 +8,9 @@ set -o errexit    # Used to exit upon error, avoiding cascading errors
 set -o nounset    # Exposes unset variables
 set -o pipefail   # Unveils hidden failures
 
+# Required forsaving temporary cache files
+export HOME='{{ walg_home_dir }}'
+
 {% if walg_conf_type == "env" %}
 set -o allexport
 source {{ walg_env }}

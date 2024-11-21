@@ -13,6 +13,7 @@ walg_conf_type: "env"  # env or yml
 walg_conf_yml_file: /etc/wal-g/config.yml
 walg_env: /etc/default/wal-g
 walg_script_path: /usr/local/scripts
+walg_home_dir: /var/lib/postgresql
 walg_data_path: /var/lib/postgresql/12/main
 
 walg_s3_id: 'id'
