@@ -110,7 +110,7 @@ walg_common_override: []
 
 ## PostgreSQL settings
 
-- `archive_command = '/usr/local/scripts/walg-push.sh %p &> /dev/null'`
+- `archive_command = '/usr/local/scripts/walg-push.sh %p'`
 - `restore_command = '/usr/local/scripts/walg-fetch.sh "%f" "%p"'`
 
 ## Usage

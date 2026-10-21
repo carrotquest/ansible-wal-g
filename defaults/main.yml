@@ -79,3 +79,4 @@ walg_common_override: []
 ## Pushgateway Prometheus metrics
 walg_pushgateway_host: ""
 walg_pushgateway_port: 9091
+walg_pushgateway_timeout: 1
